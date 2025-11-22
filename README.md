@@ -4,6 +4,7 @@ This project demonstrates how to set up and use a remote Terraform backend with 
 
 ## Project Structure
 
+```
 terraform-project/
 |-- remote_dir/
 | |-- remote.tf # Terraform code to create S3 bucket and DynamoDB table for backend
@@ -13,7 +14,7 @@ terraform-project/
 |-- backend-dev.conf # Backend configuration with S3 bucket, key, region, DynamoDB table
 |-- dev.tfvars # Environment-specific variables (instance type, environment, allowed IPs)
 |-- backend.tf # Backend declaration for Terraform remote state (encrypt = true)
-
+```
 
 ## Workflow
 
@@ -29,19 +30,19 @@ Use `config/dev.tfvars` to set environment-specific values like EC2 instance typ
 ### 4. Initialize Terraform with backend  
 
 **Run:**
-
+```
 env=dev
 terraform get -update=true
 terraform init -backend-config=config/backend-${env}.conf
-
+```
 
 ### 5. Plan and apply infrastructure  
 
 **Run:**
-
+```
 terraform plan -var-file=config/${env}.tfvars
 terraform apply -var-file=config/${env}.tfvars
-
+```
 
 ## Benefits
 
